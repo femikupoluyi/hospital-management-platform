@@ -1,0 +1,13 @@
+{
+  "patient_id": "4c26e810-fa85-4a8d-89ee-1de253e3a7a9",
+  "hospital_id": "37f6c11b-5ded-4c17-930d-88b1fec06301",
+  "appointment_id": "fe05f594-8805-41fd-8dbf-0754b24932db",
+  "rating": 5,
+  "service_quality": 5,
+  "staff_friendliness": 5,
+  "cleanliness": 4,
+  "wait_time": 3,
+  "overall_experience": "Excellent service, very professional staff. Only issue was slightly long wait time.",
+  "recommendations": "Improve appointment scheduling to reduce wait times",
+  "would_recommend": true
+}

@@ -1,0 +1,11 @@
+{
+  "campaign_name": "Hypertension Awareness Campaign",
+  "campaign_type": "educational",
+  "target_audience": "all_patients",
+  "audience_filters": {},
+  "channels": ["email", "sms", "whatsapp"],
+  "subject": "Managing Your Blood Pressure - Important Information",
+  "content_template": "Dear {{name}}, As part of our care program, we're sharing important tips for managing hypertension. Visit {{hospital_name}} for a free BP check. Reply STOP to unsubscribe.",
+  "schedule_type": "immediate",
+  "personalization_fields": ["name", "hospital_name"]
+}

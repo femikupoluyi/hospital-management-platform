@@ -1,0 +1,24 @@
+{
+  "hospital_id": "37f6c11b-5ded-4c17-930d-88b1fec06301",
+  "first_name": "Sarah",
+  "last_name": "Wilson",
+  "date_of_birth": "1985-03-15",
+  "gender": "female",
+  "email": "sarah.wilson@email.com",
+  "phone": "+233201234567",
+  "address": "123 Health Street",
+  "city": "Accra",
+  "state": "Greater Accra",
+  "country": "Ghana",
+  "blood_group": "O+",
+  "allergies": ["Penicillin", "Peanuts"],
+  "chronic_conditions": ["Hypertension"],
+  "emergency_contact_name": "John Wilson",
+  "emergency_contact_phone": "+233209876543",
+  "preferred_language": "English",
+  "communication_preferences": {
+    "sms": true,
+    "email": true,
+    "whatsapp": true
+  }
+}
