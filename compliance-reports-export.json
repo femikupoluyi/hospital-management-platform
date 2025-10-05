@@ -1,0 +1,93 @@
+[
+  {
+    "name": "Generate Disease Surveillance Report",
+    "data": {
+      "success": true,
+      "reportId": "SURV1759607437747GN1RV",
+      "reportUrl": "/api/compliance/reports/download/SURV1759607437747GN1RV",
+      "content": {
+        "reportId": "SURV1759607437747GN1RV",
+        "period": "weekly",
+        "region": "Lagos",
+        "diseases": [
+          {
+            "name": "COVID-19",
+            "cases": 57,
+            "trend": "increasing"
+          },
+          {
+            "name": "Malaria",
+            "cases": 4,
+            "trend": "stable"
+          },
+          {
+            "name": "Typhoid",
+            "cases": 84,
+            "trend": "decreasing"
+          }
+        ],
+        "generatedAt": "2025-10-04T19:50:37.748Z"
+      },
+      "submitted": true
+    }
+  },
+  {
+    "name": "Export Government Report",
+    "data": {
+      "success": true,
+      "reportId": "GOV1759607437766LKMGZ",
+      "reportType": "monthly-statistics",
+      "format": "pdf",
+      "reportUrl": "/api/compliance/reports/download/GOV1759607437766LKMGZ",
+      "status": "generated",
+      "submissionStatus": "ready",
+      "exportPath": "/exports/government/GOV1759607437766LKMGZ.pdf"
+    }
+  },
+  {
+    "name": "Generate NGO Report",
+    "data": {
+      "success": true,
+      "reportId": "NGO1759607437770Z6RNN",
+      "organizationId": "WHO",
+      "reportUrl": "/api/compliance/reports/download/NGO1759607437770Z6RNN",
+      "content": {
+        "organization": "WHO",
+        "period": "quarterly",
+        "metrics": [
+          {
+            "name": "patient-volume",
+            "value": 536,
+            "unit": "patients"
+          },
+          {
+            "name": "disease-prevalence",
+            "value": 280,
+            "unit": "percentage"
+          },
+          {
+            "name": "treatment-outcomes",
+            "value": 707,
+            "unit": "percentage"
+          }
+        ]
+      },
+      "autoSubmitted": true
+    }
+  },
+  {
+    "name": "Automated Report Schedule",
+    "data": {
+      "success": true,
+      "scheduleId": "SCH1759607437779R1DS9",
+      "reportType": "monthly-compliance",
+      "schedule": "monthly",
+      "recipients": [
+        "compliance@hospital.com"
+      ],
+      "autoSubmit": true,
+      "nextRun": "2025-11-03T19:50:37.779Z",
+      "status": "active"
+    }
+  }
+]

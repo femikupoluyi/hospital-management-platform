@@ -1,0 +1,262 @@
+{
+  "timestamp": "2025-10-04T20:24:25.732Z",
+  "publicUrl": "https://grandpro-hmso-morphvm-mkofwuzh.http.cloud.morph.so",
+  "summary": {
+    "total": 32,
+    "passed": 32,
+    "failed": 0,
+    "successRate": "100.00%"
+  },
+  "moduleStats": {
+    "Digital Sourcing": {
+      "total": 4,
+      "passed": 4
+    },
+    "CRM": {
+      "total": 4,
+      "passed": 4
+    },
+    "HMS": {
+      "total": 7,
+      "passed": 7
+    },
+    "OCC": {
+      "total": 5,
+      "passed": 5
+    },
+    "Partner": {
+      "total": 5,
+      "passed": 5
+    },
+    "Analytics": {
+      "total": 4,
+      "passed": 4
+    }
+  },
+  "results": [
+    {
+      "endpoint": "Health Check",
+      "method": "GET",
+      "path": "/api/health",
+      "status": 200,
+      "success": true
+    },
+    {
+      "endpoint": "Statistics",
+      "method": "GET",
+      "path": "/api/stats",
+      "status": 200,
+      "success": true
+    },
+    {
+      "endpoint": "Hospital Applications",
+      "method": "GET",
+      "path": "/api/onboarding/applications",
+      "status": 200,
+      "success": true
+    },
+    {
+      "endpoint": "Onboarding Dashboard",
+      "method": "GET",
+      "path": "/api/onboarding/dashboard",
+      "status": 200,
+      "success": true
+    },
+    {
+      "endpoint": "Contracts",
+      "method": "GET",
+      "path": "/api/onboarding/contracts",
+      "status": 200,
+      "success": true
+    },
+    {
+      "endpoint": "CRM Patients",
+      "method": "GET",
+      "path": "/api/crm/patients",
+      "status": 200,
+      "success": true
+    },
+    {
+      "endpoint": "Appointments",
+      "method": "GET",
+      "path": "/api/crm/appointments",
+      "status": 200,
+      "success": true
+    },
+    {
+      "endpoint": "Campaigns",
+      "method": "GET",
+      "path": "/api/crm/campaigns",
+      "status": 200,
+      "success": true
+    },
+    {
+      "endpoint": "Hospital Owners",
+      "method": "GET",
+      "path": "/api/crm/owners",
+      "status": 200,
+      "success": true
+    },
+    {
+      "endpoint": "HMS Patients",
+      "method": "GET",
+      "path": "/api/hms/patients",
+      "status": 200,
+      "success": true
+    },
+    {
+      "endpoint": "Inventory",
+      "method": "GET",
+      "path": "/api/hms/inventory",
+      "status": 200,
+      "success": true
+    },
+    {
+      "endpoint": "Low Stock Alert",
+      "method": "GET",
+      "path": "/api/hms/inventory/low-stock",
+      "status": 200,
+      "success": true
+    },
+    {
+      "endpoint": "Invoices",
+      "method": "GET",
+      "path": "/api/hms/billing/invoices",
+      "status": 200,
+      "success": true
+    },
+    {
+      "endpoint": "Available Beds",
+      "method": "GET",
+      "path": "/api/hms/beds/available",
+      "status": 200,
+      "success": true
+    },
+    {
+      "endpoint": "HMS Analytics",
+      "method": "GET",
+      "path": "/api/hms/analytics/dashboard",
+      "status": 200,
+      "success": true
+    },
+    {
+      "endpoint": "OCC Dashboard",
+      "method": "GET",
+      "path": "/api/occ/dashboard",
+      "status": 200,
+      "success": true
+    },
+    {
+      "endpoint": "OCC Metrics",
+      "method": "GET",
+      "path": "/api/occ/metrics",
+      "status": 200,
+      "success": true
+    },
+    {
+      "endpoint": "Alerts",
+      "method": "GET",
+      "path": "/api/occ/alerts",
+      "status": 200,
+      "success": true
+    },
+    {
+      "endpoint": "KPIs",
+      "method": "GET",
+      "path": "/api/occ/kpis",
+      "status": 200,
+      "success": true
+    },
+    {
+      "endpoint": "Projects",
+      "method": "GET",
+      "path": "/api/occ/projects",
+      "status": 200,
+      "success": true
+    },
+    {
+      "endpoint": "Insurance Providers",
+      "method": "GET",
+      "path": "/api/partner/insurance/providers",
+      "status": 200,
+      "success": true
+    },
+    {
+      "endpoint": "Pharmacy Orders",
+      "method": "GET",
+      "path": "/api/partner/pharmacy/orders",
+      "status": 200,
+      "success": true
+    },
+    {
+      "endpoint": "Suppliers",
+      "method": "GET",
+      "path": "/api/partner/suppliers",
+      "status": 200,
+      "success": true
+    },
+    {
+      "endpoint": "Telemedicine Sessions",
+      "method": "GET",
+      "path": "/api/partner/telemedicine/sessions",
+      "status": 200,
+      "success": true
+    },
+    {
+      "endpoint": "Compliance Reports",
+      "method": "GET",
+      "path": "/api/partner/compliance/reports",
+      "status": 200,
+      "success": true
+    },
+    {
+      "endpoint": "Analytics Metrics",
+      "method": "GET",
+      "path": "/api/analytics/metrics",
+      "status": 200,
+      "success": true
+    },
+    {
+      "endpoint": "ML Models Performance",
+      "method": "GET",
+      "path": "/api/analytics/models/performance",
+      "status": 200,
+      "success": true
+    },
+    {
+      "endpoint": "Submit Hospital Application",
+      "method": "POST",
+      "path": "/api/onboarding/apply",
+      "status": 200,
+      "success": true
+    },
+    {
+      "endpoint": "Register Patient",
+      "method": "POST",
+      "path": "/api/hms/patients",
+      "status": 200,
+      "success": true
+    },
+    {
+      "endpoint": "Demand Prediction",
+      "method": "POST",
+      "path": "/api/analytics/predict/demand",
+      "status": 200,
+      "success": true
+    },
+    {
+      "endpoint": "AI Triage",
+      "method": "POST",
+      "path": "/api/analytics/ml/triage",
+      "status": 200,
+      "success": true
+    },
+    {
+      "endpoint": "Local Health Check",
+      "method": "GET",
+      "path": "/api/health",
+      "status": 200,
+      "success": true
+    }
+  ]
+}

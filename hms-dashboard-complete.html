@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Management System - Complete Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #667eea;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .nav-tabs {
+            display: flex;
+            background: white;
+            border-radius: 10px 10px 0 0;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-tab {
+            flex: 1;
+            padding: 1rem;
+            background: white;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #666;
+            transition: all 0.3s;
+            border-bottom: 3px solid transparent;
+        }
+
+        .nav-tab:hover {
+            background: #f8f9fa;
+        }
+
+        .nav-tab.active {
+            color: #667eea;
+            border-bottom-color: #667eea;
+            background: #f8f9fa;
+        }
+
+        .content-area {
+            background: white;
+            padding: 2rem;
+            border-radius: 0 0 10px 10px;
+            min-height: 500px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 1.5rem;
+            border-radius: 10px;
+            color: white;
+        }
+
+        .stat-title {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .form-section {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #333;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .table-container {
+            overflow-x: auto;
+            margin-top: 1.5rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        th {
+            background: #f8f9fa;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            color: #333;
+            border-bottom: 2px solid #dee2e6;
+        }
+
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        tr:hover {
+            background: #f8f9fa;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn-sm {
+            padding: 0.25rem 0.75rem;
+            font-size: 0.875rem;
+        }
+
+        .btn-edit {
+            background: #28a745;
+        }
+
+        .btn-delete {
+            background: #dc3545;
+        }
+
+        .alert {
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+        }
+
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .alert-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            color: #666;
+        }
+
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #666;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <span>🏥</span>
+            <span>Hospital Management System</span>
+        </div>
+        <div class="user-info">
+            <span>Welcome, Admin</span>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="nav-tabs">
+            <button class="nav-tab active" onclick="switchTab('dashboard')">📊 Dashboard</button>
+            <button class="nav-tab" onclick="switchTab('emr')">📋 Medical Records</button>
+            <button class="nav-tab" onclick="switchTab('billing')">💰 Billing</button>
+            <button class="nav-tab" onclick="switchTab('inventory')">📦 Inventory</button>
+            <button class="nav-tab" onclick="switchTab('staff')">👥 Staff</button>
+            <button class="nav-tab" onclick="switchTab('beds')">🛏️ Beds</button>
+        </div>
+
+        <div class="content-area">
+            <!-- Dashboard Tab -->
+            <div id="dashboard" class="tab-content active">
+                <h2>Dashboard Overview</h2>
+                <div class="dashboard-grid" id="dashboardStats">
+                    <div class="stat-card">
+                        <div class="stat-title">Total Patients</div>
+                        <div class="stat-value" id="totalPatients">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-title">Active Admissions</div>
+                        <div class="stat-value" id="activeAdmissions">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-title">Bed Occupancy</div>
+                        <div class="stat-value" id="bedOccupancy">0%</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-title">Total Revenue</div>
+                        <div class="stat-value" id="totalRevenue">$0</div>
+                    </div>
+                </div>
+
+                <h3>Quick Actions</h3>
+                <div class="form-section">
+                    <button onclick="switchTab('emr')">➕ New Medical Record</button>
+                    <button onclick="switchTab('billing')">💵 Create Invoice</button>
+                    <button onclick="switchTab('inventory')">📦 Check Inventory</button>
+                    <button onclick="loadDashboard()">🔄 Refresh Dashboard</button>
+                </div>
+            </div>
+
+            <!-- EMR Tab -->
+            <div id="emr" class="tab-content">
+                <h2>Electronic Medical Records</h2>
+                
+                <div class="form-section">
+                    <h3>Add New Medical Record</h3>
+                    <form id="emrForm" onsubmit="submitEMR(event)">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Patient ID</label>
+                                <input type="number" name="patient_id" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Doctor Name</label>
+                                <input type="text" name="doctor_name" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Diagnosis</label>
+                            <textarea name="diagnosis" rows="3" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Prescription</label>
+                            <textarea name="prescription" rows="3" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Lab Results</label>
+                            <textarea name="lab_results" rows="2"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Notes</label>
+                            <textarea name="notes" rows="2"></textarea>
+                        </div>
+                        <button type="submit">Save Medical Record</button>
+                    </form>
+                </div>
+
+                <div class="table-container">
+                    <h3>Recent Medical Records</h3>
+                    <table id="emrTable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Patient</th>
+                                <th>Diagnosis</th>
+                                <th>Doctor</th>
+                                <th>Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td colspan="6" class="loading">Loading...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Billing Tab -->
+            <div id="billing" class="tab-content">
+                <h2>Billing & Revenue Management</h2>
+                
+                <div class="form-section">
+                    <h3>Create New Invoice</h3>
+                    <form id="billingForm" onsubmit="submitInvoice(event)">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Patient ID</label>
+                                <input type="number" name="patient_id" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Total Amount</label>
+                                <input type="number" name="total_amount" step="0.01" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Payment Method</label>
+                                <select name="payment_method" required>
+                                    <option value="">Select...</option>
+                                    <option value="cash">Cash</option>
+                                    <option value="card">Card</option>
+                                    <option value="insurance">Insurance</option>
+                                    <option value="nhis">NHIS</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Insurance Provider</label>
+                                <input type="text" name="insurance_provider">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Services (JSON format)</label>
+                            <textarea name="services" rows="3" placeholder='[{"name": "Consultation", "cost": 100}]' required></textarea>
+                        </div>
+                        <button type="submit">Create Invoice</button>
+                    </form>
+                </div>
+
+                <div class="table-container">
+                    <h3>Recent Invoices</h3>
+                    <table id="invoiceTable">
+                        <thead>
+                            <tr>
+                                <th>Invoice #</th>
+                                <th>Patient</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td colspan="6" class="loading">Loading...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Inventory Tab -->
+            <div id="inventory" class="tab-content">
+                <h2>Inventory Management</h2>
+                
+                <div class="form-section">
+                    <h3>Add Stock Entry</h3>
+                    <form id="inventoryForm" onsubmit="submitInventory(event)">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Item Name</label>
+                                <input type="text" name="item_name" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Category</label>
+                                <select name="category" required>
+                                    <option value="">Select...</option>
+                                    <option value="Medicine">Medicine</option>
+                                    <option value="Consumables">Consumables</option>
+                                    <option value="Equipment">Equipment</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Quantity</label>
+                                <input type="number" name="quantity" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Unit</label>
+                                <input type="text" name="unit" placeholder="e.g., tablets, vials" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Reorder Level</label>
+                                <input type="number" name="reorder_level" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Expiry Date</label>
+                                <input type="date" name="expiry_date">
+                            </div>
+                        </div>
+                        <button type="submit">Add to Inventory</button>
+                    </form>
+                </div>
+
+                <div class="table-container">
+                    <h3>Current Inventory</h3>
+                    <button onclick="loadLowStock()" style="margin-bottom: 1rem;">🔴 Show Low Stock Only</button>
+                    <table id="inventoryTable">
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Category</th>
+                                <th>Quantity</th>
+                                <th>Reorder Level</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td colspan="6" class="loading">Loading...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Staff Tab -->
+            <div id="staff" class="tab-content">
+                <h2>Staff Management</h2>
+                
+                <div class="form-section">
+                    <h3>Schedule Staff</h3>
+                    <form id="scheduleForm" onsubmit="submitSchedule(event)">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Staff ID</label>
+                                <input type="number" name="staff_id" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Date</label>
+                                <input type="date" name="date" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Start Time</label>
+                                <input type="time" name="start_time" required>
+                            </div>
+                            <div class="form-group">
+                                <label>End Time</label>
+                                <input type="time" name="end_time" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Department</label>
+                                <input type="text" name="department" required>
+                            </div>
+                        </div>
+                        <button type="submit">Create Schedule</button>
+                    </form>
+                </div>
+
+                <div class="table-container">
+                    <h3>Staff Schedule</h3>
+                    <table id="scheduleTable">
+                        <thead>
+                            <tr>
+                                <th>Staff Name</th>
+                                <th>Designation</th>
+                                <th>Date</th>
+                                <th>Shift</th>
+                                <th>Department</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td colspan="6" class="loading">Loading...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Beds Tab -->
+            <div id="beds" class="tab-content">
+                <h2>Bed Management</h2>
+                
+                <div class="form-section">
+                    <h3>New Admission</h3>
+                    <form id="admissionForm" onsubmit="submitAdmission(event)">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Patient ID</label>
+                                <input type="number" name="patient_id" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Bed ID</label>
+                                <input type="number" name="bed_id" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Doctor Name</label>
+                                <input type="text" name="doctor_name" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Diagnosis</label>
+                            <textarea name="diagnosis" rows="3" required></textarea>
+                        </div>
+                        <button type="submit">Admit Patient</button>
+                    </form>
+                </div>
+
+                <div class="table-container">
+                    <h3>Bed Status</h3>
+                    <div id="bedSummary" style="margin-bottom: 1rem;">
+                        <span style="margin-right: 2rem;">Total Beds: <strong id="totalBeds">0</strong></span>
+                        <span style="margin-right: 2rem;">Available: <strong id="availableBeds">0</strong></span>
+                        <span>Occupied: <strong id="occupiedBeds">0</strong></span>
+                    </div>
+                    <table id="bedTable">
+                        <thead>
+                            <tr>
+                                <th>Bed Number</th>
+                                <th>Ward</th>
+                                <th>Floor</th>
+                                <th>Status</th>
+                                <th>Patient</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td colspan="6" class="loading">Loading...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:3003/api';
+        
+        // Tab switching
+        function switchTab(tabName) {
+            // Remove active class from all tabs and contents
+            document.querySelectorAll('.nav-tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            
+            // Add active class to selected tab
+            event.target.classList.add('active');
+            document.getElementById(tabName).classList.add('active');
+            
+            // Load data for the tab
+            loadTabData(tabName);
+        }
+
+        // Load data based on active tab
+        function loadTabData(tabName) {
+            switch(tabName) {
+                case 'dashboard':
+                    loadDashboard();
+                    break;
+                case 'emr':
+                    loadEMR();
+                    break;
+                case 'billing':
+                    loadInvoices();
+                    break;
+                case 'inventory':
+                    loadInventory();
+                    break;
+                case 'staff':
+                    loadSchedules();
+                    break;
+                case 'beds':
+                    loadBeds();
+                    break;
+            }
+        }
+
+        // Dashboard
+        async function loadDashboard() {
+            try {
+                const response = await fetch(`${API_BASE}/analytics/dashboard`);
+                const data = await response.json();
+                
+                document.getElementById('totalPatients').textContent = data.patients || 0;
+                document.getElementById('activeAdmissions').textContent = data.active_admissions || 0;
+                document.getElementById('bedOccupancy').textContent = `${data.bed_occupancy?.rate || 0}%`;
+                document.getElementById('totalRevenue').textContent = `$${(data.revenue?.total || 0).toLocaleString()}`;
+            } catch (error) {
+                console.error('Error loading dashboard:', error);
+            }
+        }
+
+        // EMR Functions
+        async function loadEMR() {
+            try {
+                const response = await fetch(`${API_BASE}/emr`);
+                const records = await response.json();
+                
+                const tbody = document.querySelector('#emrTable tbody');
+                if (records.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="6">No medical records found</td></tr>';
+                    return;
+                }
+                
+                tbody.innerHTML = records.map(record => `
+                    <tr>
+                        <td>${record.id}</td>
+                        <td>${record.patient_name || 'N/A'}</td>
+                        <td>${record.diagnosis || 'N/A'}</td>
+                        <td>${record.doctor_name || 'N/A'}</td>
+                        <td>${new Date(record.created_at).toLocaleDateString()}</td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="btn-sm btn-edit">View</button>
+                            </div>
+                        </td>
+                    </tr>
+                `).join('');
+            } catch (error) {
+                console.error('Error loading EMR:', error);
+            }
+        }
+
+        async function submitEMR(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData);
+            
+            try {
+                const response = await fetch(`${API_BASE}/emr`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                
+                if (response.ok) {
+                    alert('Medical record saved successfully!');
+                    event.target.reset();
+                    loadEMR();
+                } else {
+                    alert('Error saving medical record');
+                }
+            } catch (error) {
+                alert('Error: ' + error.message);
+            }
+        }
+
+        // Billing Functions
+        async function loadInvoices() {
+            try {
+                const response = await fetch(`${API_BASE}/billing/invoices`);
+                const invoices = await response.json();
+                
+                const tbody = document.querySelector('#invoiceTable tbody');
+                if (invoices.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="6">No invoices found</td></tr>';
+                    return;
+                }
+                
+                tbody.innerHTML = invoices.map(invoice => `
+                    <tr>
+                        <td>${invoice.invoice_number}</td>
+                        <td>${invoice.patient_name || 'N/A'}</td>
+                        <td>$${invoice.total_amount}</td>
+                        <td>${invoice.payment_status}</td>
+                        <td>${new Date(invoice.created_at).toLocaleDateString()}</td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="btn-sm btn-edit">View</button>
+                            </div>
+                        </td>
+                    </tr>
+                `).join('');
+            } catch (error) {
+                console.error('Error loading invoices:', error);
+            }
+        }
+
+        async function submitInvoice(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData);
+            
+            try {
+                data.services = JSON.parse(data.services);
+            } catch {
+                data.services = [{ name: 'Consultation', cost: data.total_amount }];
+            }
+            
+            try {
+                const response = await fetch(`${API_BASE}/billing/invoices`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                
+                if (response.ok) {
+                    alert('Invoice created successfully!');
+                    event.target.reset();
+                    loadInvoices();
+                } else {
+                    alert('Error creating invoice');
+                }
+            } catch (error) {
+                alert('Error: ' + error.message);
+            }
+        }
+
+        // Inventory Functions
+        async function loadInventory() {
+            try {
+                const response = await fetch(`${API_BASE}/inventory`);
+                const items = await response.json();
+                
+                const tbody = document.querySelector('#inventoryTable tbody');
+                if (items.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="6">No inventory items found</td></tr>';
+                    return;
+                }
+                
+                tbody.innerHTML = items.map(item => {
+                    const isLowStock = item.quantity <= item.reorder_level;
+                    return `
+                        <tr>
+                            <td>${item.item_name}</td>
+                            <td>${item.category}</td>
+                            <td>${item.quantity} ${item.unit || ''}</td>
+                            <td>${item.reorder_level}</td>
+                            <td>${isLowStock ? '🔴 Low Stock' : '✅ In Stock'}</td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-sm btn-edit" onclick="updateStock(${item.id})">Update</button>
+                                </div>
+                            </td>
+                        </tr>
+                    `;
+                }).join('');
+            } catch (error) {
+                console.error('Error loading inventory:', error);
+            }
+        }
+
+        async function loadLowStock() {
+            try {
+                const response = await fetch(`${API_BASE}/inventory/low-stock`);
+                const items = await response.json();
+                
+                const tbody = document.querySelector('#inventoryTable tbody');
+                if (items.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="6">No low stock items</td></tr>';
+                    return;
+                }
+                
+                tbody.innerHTML = items.map(item => `
+                    <tr>
+                        <td>${item.item_name}</td>
+                        <td>${item.category}</td>
+                        <td>${item.quantity} ${item.unit || ''}</td>
+                        <td>${item.reorder_level}</td>
+                        <td>🔴 Low Stock</td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="btn-sm btn-edit" onclick="updateStock(${item.id})">Reorder</button>
+                            </div>
+                        </td>
+                    </tr>
+                `).join('');
+            } catch (error) {
+                console.error('Error loading low stock:', error);
+            }
+        }
+
+        async function submitInventory(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData);
+            
+            try {
+                const response = await fetch(`${API_BASE}/inventory/stock`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                
+                if (response.ok) {
+                    alert('Inventory item added successfully!');
+                    event.target.reset();
+                    loadInventory();
+                } else {
+                    alert('Error adding inventory item');
+                }
+            } catch (error) {
+                alert('Error: ' + error.message);
+            }
+        }
+
+        function updateStock(itemId) {
+            const quantity = prompt('Enter quantity change (positive to add, negative to remove):');
+            if (quantity && !isNaN(quantity)) {
+                fetch(`${API_BASE}/inventory/${itemId}/update-stock`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ quantity_change: parseInt(quantity) })
+                })
+                .then(response => {
+                    if (response.ok) {
+                        alert('Stock updated successfully!');
+                        loadInventory();
+                    }
+                })
+                .catch(error => alert('Error updating stock'));
+            }
+        }
+
+        // Staff Functions
+        async function loadSchedules() {
+            try {
+                const response = await fetch(`${API_BASE}/staff/schedules`);
+                const schedules = await response.json();
+                
+                const tbody = document.querySelector('#scheduleTable tbody');
+                if (schedules.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="6">No schedules found</td></tr>';
+                    return;
+                }
+                
+                tbody.innerHTML = schedules.map(schedule => `
+                    <tr>
+                        <td>${schedule.staff_name || 'N/A'}</td>
+                        <td>${schedule.designation || 'N/A'}</td>
+                        <td>${new Date(schedule.date).toLocaleDateString()}</td>
+                        <td>${schedule.start_time} - ${schedule.end_time}</td>
+                        <td>${schedule.department}</td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="btn-sm btn-edit">Edit</button>
+                            </div>
+                        </td>
+                    </tr>
+                `).join('');
+            } catch (error) {
+                console.error('Error loading schedules:', error);
+            }
+        }
+
+        async function submitSchedule(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData);
+            
+            try {
+                const response = await fetch(`${API_BASE}/staff/schedules`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                
+                if (response.ok) {
+                    alert('Schedule created successfully!');
+                    event.target.reset();
+                    loadSchedules();
+                } else {
+                    alert('Error creating schedule');
+                }
+            } catch (error) {
+                alert('Error: ' + error.message);
+            }
+        }
+
+        // Bed Management Functions
+        async function loadBeds() {
+            try {
+                const response = await fetch(`${API_BASE}/bed-management/status`);
+                const data = await response.json();
+                
+                // Update summary
+                document.getElementById('totalBeds').textContent = data.summary?.total_beds || 0;
+                document.getElementById('availableBeds').textContent = data.summary?.available || 0;
+                document.getElementById('occupiedBeds').textContent = data.summary?.occupied || 0;
+                
+                // Update table
+                const tbody = document.querySelector('#bedTable tbody');
+                if (!data.beds || data.beds.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="6">No beds configured</td></tr>';
+                    return;
+                }
+                
+                tbody.innerHTML = data.beds.map(bed => `
+                    <tr>
+                        <td>${bed.bed_number}</td>
+                        <td>${bed.ward}</td>
+                        <td>${bed.floor}</td>
+                        <td>${bed.status === 'available' ? '✅ Available' : '🔴 Occupied'}</td>
+                        <td>${bed.patient_name || '-'}</td>
+                        <td>
+                            ${bed.status === 'occupied' ? 
+                                `<button class="btn-sm btn-delete" onclick="dischargeBed(${bed.id})">Discharge</button>` : 
+                                `<button class="btn-sm btn-edit">Reserve</button>`
+                            }
+                        </td>
+                    </tr>
+                `).join('');
+            } catch (error) {
+                console.error('Error loading beds:', error);
+            }
+        }
+
+        async function submitAdmission(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData);
+            
+            try {
+                const response = await fetch(`${API_BASE}/bed-management/admission`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                
+                if (response.ok) {
+                    alert('Patient admitted successfully!');
+                    event.target.reset();
+                    loadBeds();
+                } else {
+                    alert('Error admitting patient');
+                }
+            } catch (error) {
+                alert('Error: ' + error.message);
+            }
+        }
+
+        function dischargeBed(bedId) {
+            if (confirm('Discharge patient from this bed?')) {
+                const admissionId = prompt('Enter admission ID:');
+                if (admissionId) {
+                    fetch(`${API_BASE}/bed-management/discharge`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ 
+                            admission_id: parseInt(admissionId), 
+                            bed_id: bedId 
+                        })
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            alert('Patient discharged successfully!');
+                            loadBeds();
+                        }
+                    })
+                    .catch(error => alert('Error discharging patient'));
+                }
+            }
+        }
+
+        // Initialize dashboard on load
+        document.addEventListener('DOMContentLoaded', () => {
+            loadDashboard();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+{
+  "timestamp": "2025-10-04T20:30:49.699Z",
+  "platformUrl": "https://grandpro-hmso-morphvm-mkofwuzh.http.cloud.morph.so",
+  "workflows": {
+    "Hospital_Onboarding": {
+      "success": true,
+      "steps": [
+        {
+          "step": "Submit Application",
+          "success": true
+        },
+        {
+          "step": "Check Status",
+          "success": true
+        },
+        {
+          "step": "Dashboard View",
+          "success": true
+        },
+        {
+          "step": "Contract Ready",
+          "success": true
+        }
+      ]
+    },
+    "Patient_Care": {
+      "success": true,
+      "steps": [
+        {
+          "step": "Patient Registration",
+          "success": true
+        },
+        {
+          "step": "Appointment Booking",
+          "success": true
+        },
+        {
+          "step": "Medical Records",
+          "success": true
+        },
+        {
+          "step": "Invoice Generation",
+          "success": true
+        },
+        {
+          "step": "Insurance Claim",
+          "success": true
+        }
+      ]
+    },
+    "Hospital_Operations": {
+      "success": true,
+      "steps": [
+        {
+          "step": "Inventory Check",
+          "success": true
+        },
+        {
+          "step": "Low Stock Alert",
+          "success": true
+        },
+        {
+          "step": "Add Inventory",
+          "success": true
+        },
+        {
+          "step": "Bed Management",
+          "success": true
+        },
+        {
+          "step": "Staff Schedule",
+          "success": true
+        }
+      ]
+    },
+    "Analytics_AI": {
+      "success": true,
+      "steps": [
+        {
+          "step": "Analytics Metrics",
+          "success": true
+        },
+        {
+          "step": "Demand Prediction",
+          "success": true
+        },
+        {
+          "step": "AI Triage",
+          "success": true
+        },
+        {
+          "step": "Fraud Detection",
+          "success": true
+        },
+        {
+          "step": "Risk Scoring",
+          "success": true
+        }
+      ]
+    },
+    "Command_Centre": {
+      "success": true,
+      "steps": [
+        {
+          "step": "OCC Dashboard",
+          "success": true
+        },
+        {
+          "step": "System Metrics",
+          "success": true
+        },
+        {
+          "step": "Alert System",
+          "success": true
+        },
+        {
+          "step": "KPI Monitoring",
+          "success": true
+        },
+        {
+          "step": "Project Management",
+          "success": true
+        }
+      ]
+    }
+  },
+  "integration": {
+    "database": true,
+    "crossModule": true
+  },
+  "performance": {
+    "results": [
+      {
+        "endpoint": "/api/health",
+        "responseTime": 289,
+        "success": true
+      },
+      {
+        "endpoint": "/api/stats",
+        "responseTime": 1112,
+        "success": false
+      },
+      {
+        "endpoint": "/api/hms/patients",
+        "responseTime": 296,
+        "success": true
+      },
+      {
+        "endpoint": "/api/analytics/metrics",
+        "responseTime": 41,
+        "success": true
+      }
+    ],
+    "averageResponseTime": 434.5,
+    "success": true
+  },
+  "summary": {
+    "workflowsPassed": 5,
+    "workflowsTotal": 5,
+    "integrationPassed": true,
+    "performancePassed": true,
+    "overallStatus": "PASSED"
+  }
+}

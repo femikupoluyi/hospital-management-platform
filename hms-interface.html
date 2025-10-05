@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .feature-card { cursor: pointer; transition: all 0.3s; }
+        .feature-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.4); }
+        .modal.active { display: flex; justify-content: center; align-items: center; }
+        .modal-content { background-color: white; border-radius: 10px; padding: 30px; max-width: 800px; width: 90%; max-height: 80vh; overflow-y: auto; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <header class="bg-blue-600 text-white shadow-lg">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <i class="fas fa-hospital text-3xl mr-3"></i>
+                    <div>
+                        <h1 class="text-2xl font-bold">Hospital Management System</h1>
+                        <p class="text-sm opacity-90">Complete Healthcare Operations</p>
+                    </div>
+                </div>
+                <a href="/" class="bg-blue-500 hover:bg-blue-700 px-4 py-2 rounded transition">
+                    <i class="fas fa-home mr-2"></i> Main Platform
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-8">
+        <div id="stats-container" class="grid grid-cols-2 md:grid-cols-6 gap-4 mb-8">
+            <div class="bg-white p-4 rounded-lg shadow text-center">
+                <i class="fas fa-users text-blue-500 text-2xl mb-2"></i>
+                <p class="text-gray-600 text-sm">Total Patients</p>
+                <p id="stat-patients" class="text-2xl font-bold">-</p>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow text-center">
+                <i class="fas fa-calendar-check text-green-500 text-2xl mb-2"></i>
+                <p class="text-gray-600 text-sm">Appointments</p>
+                <p id="stat-appointments" class="text-2xl font-bold">-</p>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow text-center">
+                <i class="fas fa-file-invoice-dollar text-yellow-500 text-2xl mb-2"></i>
+                <p class="text-gray-600 text-sm">Pending Bills</p>
+                <p id="stat-bills" class="text-2xl font-bold">-</p>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow text-center">
+                <i class="fas fa-exclamation-triangle text-red-500 text-2xl mb-2"></i>
+                <p class="text-gray-600 text-sm">Low Stock</p>
+                <p id="stat-stock" class="text-2xl font-bold">-</p>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow text-center">
+                <i class="fas fa-bed text-purple-500 text-2xl mb-2"></i>
+                <p class="text-gray-600 text-sm">Occupancy</p>
+                <p id="stat-occupancy" class="text-2xl font-bold">-</p>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow text-center">
+                <i class="fas fa-procedures text-indigo-500 text-2xl mb-2"></i>
+                <p class="text-gray-600 text-sm">Available Beds</p>
+                <p id="stat-beds" class="text-2xl font-bold">-</p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="feature-card bg-white rounded-lg shadow-md p-6" onclick="openModule('patients')">
+                <div class="flex items-center mb-4">
+                    <div class="bg-blue-100 p-3 rounded-lg mr-4">
+                        <i class="fas fa-notes-medical text-blue-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold">Electronic Medical Records</h3>
+                </div>
+                <p class="text-gray-600 text-sm mb-4">Manage patient records and history</p>
+                <button class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">Access Module</button>
+            </div>
+
+            <div class="feature-card bg-white rounded-lg shadow-md p-6" onclick="openModule('billing')">
+                <div class="flex items-center mb-4">
+                    <div class="bg-green-100 p-3 rounded-lg mr-4">
+                        <i class="fas fa-money-check-alt text-green-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold">Billing & Revenue</h3>
+                </div>
+                <p class="text-gray-600 text-sm mb-4">Invoice and payment management</p>
+                <button class="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700">Access Module</button>
+            </div>
+
+            <div class="feature-card bg-white rounded-lg shadow-md p-6" onclick="openModule('inventory')">
+                <div class="flex items-center mb-4">
+                    <div class="bg-yellow-100 p-3 rounded-lg mr-4">
+                        <i class="fas fa-boxes text-yellow-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold">Inventory Management</h3>
+                </div>
+                <p class="text-gray-600 text-sm mb-4">Track medications and supplies</p>
+                <button class="w-full bg-yellow-600 text-white py-2 rounded hover:bg-yellow-700">Access Module</button>
+            </div>
+
+            <div class="feature-card bg-white rounded-lg shadow-md p-6" onclick="openModule('staff')">
+                <div class="flex items-center mb-4">
+                    <div class="bg-purple-100 p-3 rounded-lg mr-4">
+                        <i class="fas fa-user-md text-purple-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold">Staff Management</h3>
+                </div>
+                <p class="text-gray-600 text-sm mb-4">Staff scheduling and records</p>
+                <button class="w-full bg-purple-600 text-white py-2 rounded hover:bg-purple-700">Access Module</button>
+            </div>
+
+            <div class="feature-card bg-white rounded-lg shadow-md p-6" onclick="openModule('beds')">
+                <div class="flex items-center mb-4">
+                    <div class="bg-indigo-100 p-3 rounded-lg mr-4">
+                        <i class="fas fa-bed text-indigo-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold">Bed Management</h3>
+                </div>
+                <p class="text-gray-600 text-sm mb-4">Real-time bed availability</p>
+                <button class="w-full bg-indigo-600 text-white py-2 rounded hover:bg-indigo-700">Access Module</button>
+            </div>
+
+            <div class="feature-card bg-white rounded-lg shadow-md p-6" onclick="openModule('analytics')">
+                <div class="flex items-center mb-4">
+                    <div class="bg-red-100 p-3 rounded-lg mr-4">
+                        <i class="fas fa-chart-line text-red-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold">Analytics Dashboard</h3>
+                </div>
+                <p class="text-gray-600 text-sm mb-4">Performance metrics and KPIs</p>
+                <button class="w-full bg-red-600 text-white py-2 rounded hover:bg-red-700">Access Module</button>
+            </div>
+        </div>
+    </main>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <div class="flex justify-between items-center mb-4">
+                <h2 id="modal-title" class="text-2xl font-bold"></h2>
+                <button onclick="closeModal()" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+            </div>
+            <div id="modal-body" class="mt-4"></div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = '/api/hms';
+
+        async function loadStats() {
+            try {
+                const response = await fetch(API_BASE + '/stats');
+                const stats = await response.json();
+                document.getElementById('stat-patients').textContent = stats.totalPatients || 0;
+                document.getElementById('stat-appointments').textContent = stats.todayAppointments || 0;
+                document.getElementById('stat-bills').textContent = stats.pendingBills || 0;
+                document.getElementById('stat-stock').textContent = stats.lowStockItems || 0;
+                document.getElementById('stat-occupancy').textContent = (stats.occupancyRate || 0) + '%';
+                document.getElementById('stat-beds').textContent = stats.availableBeds || 0;
+            } catch (error) {
+                console.error('Failed to load stats:', error);
+            }
+        }
+
+        function openModule(module) {
+            const modal = document.getElementById('modal');
+            const modalTitle = document.getElementById('modal-title');
+            const modalBody = document.getElementById('modal-body');
+            
+            modal.classList.add('active');
+            
+            switch(module) {
+                case 'patients':
+                    modalTitle.textContent = 'Patient Records';
+                    loadPatients();
+                    break;
+                case 'billing':
+                    modalTitle.textContent = 'Billing Management';
+                    loadBilling();
+                    break;
+                case 'inventory':
+                    modalTitle.textContent = 'Inventory Management';
+                    loadInventory();
+                    break;
+                case 'staff':
+                    modalTitle.textContent = 'Staff Management';
+                    loadStaff();
+                    break;
+                case 'beds':
+                    modalTitle.textContent = 'Bed Management';
+                    loadBeds();
+                    break;
+                case 'analytics':
+                    modalTitle.textContent = 'Analytics Dashboard';
+                    loadAnalytics();
+                    break;
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('modal').classList.remove('active');
+        }
+
+        async function loadPatients() {
+            const modalBody = document.getElementById('modal-body');
+            try {
+                const response = await fetch(API_BASE + '/patients');
+                const patients = await response.json();
+                
+                let html = '<table class="w-full"><thead><tr class="border-b"><th class="text-left p-2">ID</th><th class="text-left p-2">Name</th><th class="text-left p-2">Gender</th><th class="text-left p-2">Phone</th></tr></thead><tbody>';
+                patients.forEach(p => {
+                    html += `<tr class="border-b"><td class="p-2">${p.id}</td><td class="p-2">${p.firstName} ${p.lastName}</td><td class="p-2">${p.gender}</td><td class="p-2">${p.phone}</td></tr>`;
+                });
+                html += '</tbody></table>';
+                modalBody.innerHTML = html;
+            } catch (error) {
+                modalBody.innerHTML = '<p class="text-red-600">Failed to load patients</p>';
+            }
+        }
+
+        async function loadBilling() {
+            const modalBody = document.getElementById('modal-body');
+            try {
+                const response = await fetch(API_BASE + '/billing');
+                const bills = await response.json();
+                
+                let html = '<table class="w-full"><thead><tr class="border-b"><th class="text-left p-2">Invoice ID</th><th class="text-left p-2">Patient</th><th class="text-left p-2">Amount</th><th class="text-left p-2">Status</th></tr></thead><tbody>';
+                bills.forEach(b => {
+                    html += `<tr class="border-b"><td class="p-2">${b.id}</td><td class="p-2">${b.patientName}</td><td class="p-2">$${b.amount}</td><td class="p-2"><span class="px-2 py-1 rounded text-xs ${b.status === 'Paid' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'}">${b.status}</span></td></tr>`;
+                });
+                html += '</tbody></table>';
+                modalBody.innerHTML = html;
+            } catch (error) {
+                modalBody.innerHTML = '<p class="text-red-600">Failed to load billing</p>';
+            }
+        }
+
+        async function loadInventory() {
+            const modalBody = document.getElementById('modal-body');
+            try {
+                const response = await fetch(API_BASE + '/inventory');
+                const items = await response.json();
+                
+                let html = '<table class="w-full"><thead><tr class="border-b"><th class="text-left p-2">Item</th><th class="text-left p-2">Category</th><th class="text-left p-2">Quantity</th><th class="text-left p-2">Status</th></tr></thead><tbody>';
+                items.forEach(i => {
+                    const isLow = i.quantity <= i.minStock;
+                    html += `<tr class="border-b"><td class="p-2">${i.name}</td><td class="p-2">${i.category}</td><td class="p-2">${i.quantity} ${i.unit}</td><td class="p-2"><span class="px-2 py-1 rounded text-xs ${isLow ? 'bg-red-100 text-red-800' : 'bg-green-100 text-green-800'}">${isLow ? 'Low Stock' : 'In Stock'}</span></td></tr>`;
+                });
+                html += '</tbody></table>';
+                modalBody.innerHTML = html;
+            } catch (error) {
+                modalBody.innerHTML = '<p class="text-red-600">Failed to load inventory</p>';
+            }
+        }
+
+        async function loadStaff() {
+            const modalBody = document.getElementById('modal-body');
+            try {
+                const response = await fetch(API_BASE + '/staff');
+                const staff = await response.json();
+                
+                let html = '<table class="w-full"><thead><tr class="border-b"><th class="text-left p-2">Name</th><th class="text-left p-2">Role</th><th class="text-left p-2">Department</th><th class="text-left p-2">Status</th></tr></thead><tbody>';
+                staff.forEach(s => {
+                    html += `<tr class="border-b"><td class="p-2">${s.name}</td><td class="p-2">${s.role}</td><td class="p-2">${s.department}</td><td class="p-2"><span class="px-2 py-1 rounded text-xs ${s.status === 'On Duty' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800'}">${s.status}</span></td></tr>`;
+                });
+                html += '</tbody></table>';
+                modalBody.innerHTML = html;
+            } catch (error) {
+                modalBody.innerHTML = '<p class="text-red-600">Failed to load staff</p>';
+            }
+        }
+
+        async function loadBeds() {
+            const modalBody = document.getElementById('modal-body');
+            try {
+                const response = await fetch(API_BASE + '/beds');
+                const data = await response.json();
+                
+                let html = `<div class="grid grid-cols-4 gap-4 mb-4">
+                    <div class="bg-green-50 p-3 rounded text-center"><p class="font-bold">${data.available}</p><p class="text-sm">Available</p></div>
+                    <div class="bg-red-50 p-3 rounded text-center"><p class="font-bold">${data.occupied}</p><p class="text-sm">Occupied</p></div>
+                    <div class="bg-yellow-50 p-3 rounded text-center"><p class="font-bold">${data.maintenance}</p><p class="text-sm">Maintenance</p></div>
+                    <div class="bg-blue-50 p-3 rounded text-center"><p class="font-bold">${data.total}</p><p class="text-sm">Total</p></div>
+                </div>`;
+                
+                html += '<table class="w-full"><thead><tr class="border-b"><th class="text-left p-2">Bed ID</th><th class="text-left p-2">Ward</th><th class="text-left p-2">Patient</th><th class="text-left p-2">Status</th></tr></thead><tbody>';
+                data.beds.forEach(b => {
+                    html += `<tr class="border-b"><td class="p-2">${b.id}</td><td class="p-2">${b.ward}</td><td class="p-2">${b.patientName || '-'}</td><td class="p-2"><span class="px-2 py-1 rounded text-xs ${b.status === 'Available' ? 'bg-green-100 text-green-800' : b.status === 'Occupied' ? 'bg-red-100 text-red-800' : 'bg-yellow-100 text-yellow-800'}">${b.status}</span></td></tr>`;
+                });
+                html += '</tbody></table>';
+                modalBody.innerHTML = html;
+            } catch (error) {
+                modalBody.innerHTML = '<p class="text-red-600">Failed to load beds</p>';
+            }
+        }
+
+        async function loadAnalytics() {
+            const modalBody = document.getElementById('modal-body');
+            try {
+                const response = await fetch(API_BASE + '/analytics');
+                const data = await response.json();
+                
+                let html = `<div class="grid grid-cols-2 gap-4 mb-4">
+                    <div class="bg-blue-50 p-4 rounded"><h3 class="font-semibold">Monthly Revenue</h3><p class="text-2xl font-bold">$${data.monthlyRevenue}</p></div>
+                    <div class="bg-green-50 p-4 rounded"><h3 class="font-semibold">Patients Served</h3><p class="text-2xl font-bold">${data.patientsServed}</p></div>
+                    <div class="bg-purple-50 p-4 rounded"><h3 class="font-semibold">Avg Wait Time</h3><p class="text-2xl font-bold">${data.avgWaitTime} min</p></div>
+                    <div class="bg-yellow-50 p-4 rounded"><h3 class="font-semibold">Staff Efficiency</h3><p class="text-2xl font-bold">${data.staffEfficiency}%</p></div>
+                </div>`;
+                modalBody.innerHTML = html;
+            } catch (error) {
+                modalBody.innerHTML = '<p class="text-red-600">Failed to load analytics</p>';
+            }
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            loadStats();
+            setInterval(loadStats, 30000);
+        });
+    </script>
+</body>
+</html>

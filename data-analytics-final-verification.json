@@ -1,0 +1,48 @@
+{
+  "timestamp": "2025-10-04T20:04:10.788Z",
+  "verification_complete": true,
+  "data_ingestion": {
+    "status": "PASSED",
+    "details": {
+      "data_lake_populated": true,
+      "aggregation_working": true,
+      "multi_module_data": "4.3/5",
+      "export_functional": true
+    }
+  },
+  "predictive_models": {
+    "status": "PASSED",
+    "details": {
+      "patient_demand": {
+        "working": true,
+        "produces_reasonable_forecasts": true
+      },
+      "drug_usage": {
+        "working": true,
+        "produces_reasonable_forecasts": true
+      },
+      "occupancy": {
+        "working": true,
+        "produces_reasonable_forecasts": true
+      }
+    }
+  },
+  "aiml_services": {
+    "status": "PASSED",
+    "details": {
+      "triage_bot": {
+        "invokable": true,
+        "yields_expected_output": true
+      },
+      "fraud_detection": {
+        "invokable": true,
+        "yields_expected_output": true
+      },
+      "patient_risk_scoring": {
+        "invokable": true,
+        "yields_expected_output": true
+      }
+    }
+  },
+  "overall_status": "VERIFIED"
+}

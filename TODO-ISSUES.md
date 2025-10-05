@@ -1,0 +1,28 @@
+# Issues to Fix
+
+- [ ] Digital Sourcing: GET /api/applications failed
+- [ ] Digital Sourcing: POST /api/applications/submit failed
+- [ ] Digital Sourcing: GET /api/scoring/evaluate/test-id failed
+- [ ] Digital Sourcing: POST /api/contracts/generate failed
+- [ ] Digital Sourcing: GET /api/dashboard/onboarding failed
+- [ ] CRM System: GET /api/owners failed
+- [ ] CRM System: GET /api/patients failed
+- [ ] CRM System: GET /api/appointments failed
+- [ ] CRM System: POST /api/appointments failed
+- [ ] CRM System: GET /api/campaigns failed
+- [ ] CRM System: POST /api/communications/send failed
+- [ ] HMS Core: Service not running on port 3003
+- [ ] OCC Command Centre: GET /api/command-centre/overview failed
+- [ ] OCC Command Centre: GET /api/monitoring/dashboard failed
+- [ ] OCC Command Centre: GET /api/alerts failed
+- [ ] OCC Command Centre: GET /api/projects failed
+- [ ] OCC Command Centre: POST /api/projects failed
+- [ ] Partner Integration: Service not running on port 3004
+- [ ] Data Analytics: Service not running on port 3005
+- [ ] Database: password authentication failed for user 'neondb_owner'
+- [ ] Digital Sourcing Portal: HTTP 404
+- [ ] CRM Frontend: HTTP 404
+- [ ] HMS Dashboard: HTTP 404
+- [ ] OCC Command Centre: Unreachable - timeout of 10000ms exceeded
+- [ ] Unified Platform: HTTP 404
+- [ ] API Documentation: HTTP 404

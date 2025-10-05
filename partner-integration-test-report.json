@@ -1,0 +1,34 @@
+{
+  "timestamp": "2025-10-04T19:50:37.849Z",
+  "summary": {
+    "totalTests": 17,
+    "successfulTests": 8,
+    "failedTests": 9,
+    "successRate": "47.1%"
+  },
+  "modules": {
+    "insurance": {
+      "total": 4,
+      "success": 2
+    },
+    "pharmacy": {
+      "total": 4,
+      "success": 1
+    },
+    "telemedicine": {
+      "total": 4,
+      "success": 1
+    },
+    "compliance": {
+      "total": 5,
+      "success": 4,
+      "exported": 4
+    }
+  },
+  "verification": {
+    "insuranceAPI": true,
+    "pharmacyAPI": true,
+    "telemedicineAPI": true,
+    "complianceReports": true
+  }
+}

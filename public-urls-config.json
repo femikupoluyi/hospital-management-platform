@@ -1,0 +1,72 @@
+{
+  "services": [
+    {
+      "name": "Digital Sourcing Portal",
+      "localPort": 3011,
+      "publicPath": "sourcing-portal",
+      "description": "Hospital partner onboarding"
+    },
+    {
+      "name": "CRM Dashboard",  
+      "localPort": 3012,
+      "publicPath": "crm-dashboard",
+      "description": "Customer relationship management"
+    },
+    {
+      "name": "HMS Dashboard",
+      "localPort": 3013,
+      "publicPath": "hms-dashboard",
+      "description": "Hospital management system"
+    },
+    {
+      "name": "OCC Command Centre",
+      "localPort": 8081,
+      "publicPath": "occ-dashboard",
+      "description": "Operations command centre"
+    },
+    {
+      "name": "Unified Platform",
+      "localPort": 3007,
+      "publicPath": "platform",
+      "description": "Main platform interface"
+    },
+    {
+      "name": "API Documentation",
+      "localPort": 3008,
+      "publicPath": "api-docs",
+      "description": "API documentation"
+    }
+  ],
+  "apis": [
+    {
+      "name": "Digital Sourcing API",
+      "localPort": 3001,
+      "publicPath": "api/sourcing"
+    },
+    {
+      "name": "CRM API",
+      "localPort": 3002,
+      "publicPath": "api/crm"
+    },
+    {
+      "name": "HMS API",
+      "localPort": 3003,
+      "publicPath": "api/hms"
+    },
+    {
+      "name": "Partner API",
+      "localPort": 3004,
+      "publicPath": "api/partner"
+    },
+    {
+      "name": "Analytics API",
+      "localPort": 3005,
+      "publicPath": "api/analytics"
+    },
+    {
+      "name": "OCC API",
+      "localPort": 8080,
+      "publicPath": "api/occ"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "timestamp": "2025-10-04T19:01:51.654Z",
+  "requirements": {
+    "patientRecordsSecure": false,
+    "billingWorkflows": true,
+    "inventoryUpdates": true,
+    "staffScheduling": true,
+    "dashboardMetrics": true
+  },
+  "tests": [
+    {
+      "name": "Patient Records Security",
+      "status": "FAILED",
+      "error": "invalid input syntax for type integer: \"PAT-TEST-1759604512272\""
+    },
+    {
+      "name": "Billing Workflows",
+      "status": "PASSED",
+      "details": "Invoice generation and payment processing working correctly"
+    },
+    {
+      "name": "Inventory Updates",
+      "status": "PASSED",
+      "details": "Stock management and updates working correctly"
+    },
+    {
+      "name": "Staff Scheduling",
+      "status": "PASSED",
+      "details": "Staff scheduling and roster management functional"
+    },
+    {
+      "name": "Dashboard Metrics",
+      "status": "PASSED",
+      "details": "Dashboard displays accurate, up-to-date operational metrics"
+    }
+  ],
+  "summary": "\nVERIFICATION COMPLETE\n====================\nTotal Requirements: 5\nPassed: 4\nFailed: 1\nSuccess Rate: 80.0%\n\nREQUIREMENTS STATUS:\n✓ Patient Records Secure: FAILED\n✓ Billing Workflows: PASSED\n✓ Inventory Updates: PASSED\n✓ Staff Scheduling: PASSED\n✓ Dashboard Metrics: PASSED\n\n⚠️ Some requirements need attention\n"
+}

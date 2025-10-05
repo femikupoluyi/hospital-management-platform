@@ -1,0 +1,37 @@
+{
+  "reportId": "COMP-1759666497685",
+  "generatedAt": "2025-10-05T12:14:57.685Z",
+  "hospitalId": "HOSP001",
+  "hospitalName": "City General Hospital",
+  "period": {
+    "start": "2025-09-05T12:14:57.685Z",
+    "end": "2025-10-05T12:14:57.685Z"
+  },
+  "compliance": {
+    "overall": 98.5,
+    "categories": {
+      "patientSafety": 99.2,
+      "dataPrivacy": 98.8,
+      "medicationManagement": 97.5,
+      "infectionControl": 99,
+      "staffTraining": 98
+    }
+  },
+  "metrics": {
+    "patientsServed": 3847,
+    "proceduresCompleted": 1256,
+    "medicationErrorRate": 0.02,
+    "patientSatisfaction": 4.6,
+    "incidentReports": 3
+  },
+  "certifications": [
+    "HIPAA Compliant",
+    "ISO 9001:2015",
+    "NABH Accredited"
+  ],
+  "recommendations": [
+    "Increase staff training frequency",
+    "Update medication tracking system",
+    "Enhance patient data encryption"
+  ]
+}

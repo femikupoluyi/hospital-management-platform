@@ -1,0 +1,491 @@
+{
+  "timestamp": "2025-10-04T20:09:32.369Z",
+  "summary": {
+    "total": 68,
+    "passed": 8,
+    "failed": 60,
+    "successRate": "11.76%"
+  },
+  "services": {
+    "Digital Sourcing": [
+      {
+        "service": "Digital Sourcing",
+        "endpoint": "POST /api/onboarding/apply",
+        "status": 404,
+        "success": false,
+        "responseSize": 160
+      },
+      {
+        "service": "Digital Sourcing",
+        "endpoint": "GET /api/onboarding/applications",
+        "status": 404,
+        "success": false,
+        "responseSize": 166
+      },
+      {
+        "service": "Digital Sourcing",
+        "endpoint": "GET /api/onboarding/contracts",
+        "status": 404,
+        "success": false,
+        "responseSize": 163
+      },
+      {
+        "service": "Digital Sourcing",
+        "endpoint": "GET /api/onboarding/dashboard",
+        "status": 404,
+        "success": false,
+        "responseSize": 163
+      }
+    ],
+    "CRM System": [
+      {
+        "service": "CRM System",
+        "endpoint": "GET /api/crm/owners",
+        "status": 404,
+        "success": false,
+        "responseSize": 153
+      },
+      {
+        "service": "CRM System",
+        "endpoint": "POST /api/crm/owners",
+        "status": 404,
+        "success": false,
+        "responseSize": 154
+      },
+      {
+        "service": "CRM System",
+        "endpoint": "GET /api/crm/contracts",
+        "status": 404,
+        "success": false,
+        "responseSize": 156
+      },
+      {
+        "service": "CRM System",
+        "endpoint": "GET /api/crm/payouts",
+        "status": 404,
+        "success": false,
+        "responseSize": 154
+      },
+      {
+        "service": "CRM System",
+        "endpoint": "GET /api/crm/patients",
+        "status": 404,
+        "success": false,
+        "responseSize": 155
+      },
+      {
+        "service": "CRM System",
+        "endpoint": "GET /api/crm/appointments",
+        "status": 404,
+        "success": false,
+        "responseSize": 159
+      },
+      {
+        "service": "CRM System",
+        "endpoint": "POST /api/crm/appointments",
+        "status": 404,
+        "success": false,
+        "responseSize": 160
+      },
+      {
+        "service": "CRM System",
+        "endpoint": "GET /api/crm/reminders",
+        "status": 404,
+        "success": false,
+        "responseSize": 156
+      },
+      {
+        "service": "CRM System",
+        "endpoint": "GET /api/crm/campaigns",
+        "status": 404,
+        "success": false,
+        "responseSize": 156
+      }
+    ],
+    "HMS Core": [
+      {
+        "service": "HMS Core",
+        "endpoint": "GET /api/hms/patients",
+        "status": 404,
+        "success": false,
+        "responseSize": 155
+      },
+      {
+        "service": "HMS Core",
+        "endpoint": "POST /api/hms/patients",
+        "status": 404,
+        "success": false,
+        "responseSize": 156
+      },
+      {
+        "service": "HMS Core",
+        "endpoint": "GET /api/hms/medical-records",
+        "status": 404,
+        "success": false,
+        "responseSize": 162
+      },
+      {
+        "service": "HMS Core",
+        "endpoint": "GET /api/hms/billing/invoices",
+        "status": 404,
+        "success": false,
+        "responseSize": 163
+      },
+      {
+        "service": "HMS Core",
+        "endpoint": "POST /api/hms/billing/create",
+        "status": 404,
+        "success": false,
+        "responseSize": 162
+      },
+      {
+        "service": "HMS Core",
+        "endpoint": "GET /api/hms/billing/insurance-claims",
+        "status": 404,
+        "success": false,
+        "responseSize": 171
+      },
+      {
+        "service": "HMS Core",
+        "endpoint": "GET /api/hms/inventory",
+        "status": 404,
+        "success": false,
+        "responseSize": 156
+      },
+      {
+        "service": "HMS Core",
+        "endpoint": "GET /api/hms/inventory/drugs",
+        "status": 404,
+        "success": false,
+        "responseSize": 162
+      },
+      {
+        "service": "HMS Core",
+        "endpoint": "GET /api/hms/inventory/low-stock",
+        "status": 404,
+        "success": false,
+        "responseSize": 166
+      },
+      {
+        "service": "HMS Core",
+        "endpoint": "POST /api/hms/inventory/add",
+        "status": 404,
+        "success": false,
+        "responseSize": 161
+      },
+      {
+        "service": "HMS Core",
+        "endpoint": "GET /api/hms/staff",
+        "status": 404,
+        "success": false,
+        "responseSize": 152
+      },
+      {
+        "service": "HMS Core",
+        "endpoint": "GET /api/hms/staff/schedule",
+        "status": 404,
+        "success": false,
+        "responseSize": 161
+      },
+      {
+        "service": "HMS Core",
+        "endpoint": "POST /api/hms/staff/roster",
+        "status": 404,
+        "success": false,
+        "responseSize": 160
+      },
+      {
+        "service": "HMS Core",
+        "endpoint": "GET /api/hms/beds",
+        "status": 404,
+        "success": false,
+        "responseSize": 151
+      },
+      {
+        "service": "HMS Core",
+        "endpoint": "GET /api/hms/beds/available",
+        "status": 404,
+        "success": false,
+        "responseSize": 161
+      },
+      {
+        "service": "HMS Core",
+        "endpoint": "GET /api/hms/admissions",
+        "status": 404,
+        "success": false,
+        "responseSize": 157
+      },
+      {
+        "service": "HMS Core",
+        "endpoint": "GET /api/hms/analytics/dashboard",
+        "status": 404,
+        "success": false,
+        "responseSize": 166
+      },
+      {
+        "service": "HMS Core",
+        "endpoint": "GET /api/hms/analytics/occupancy",
+        "status": 404,
+        "success": false,
+        "responseSize": 166
+      },
+      {
+        "service": "HMS Core",
+        "endpoint": "GET /api/hms/analytics/revenue",
+        "status": 404,
+        "success": false,
+        "responseSize": 164
+      }
+    ],
+    "OCC Command Centre": [
+      {
+        "service": "OCC Command Centre",
+        "endpoint": "GET /api/occ/dashboard",
+        "status": 404,
+        "success": false,
+        "responseSize": 156
+      },
+      {
+        "service": "OCC Command Centre",
+        "endpoint": "GET /api/occ/metrics",
+        "status": 404,
+        "success": false,
+        "responseSize": 154
+      },
+      {
+        "service": "OCC Command Centre",
+        "endpoint": "GET /api/occ/hospitals",
+        "status": 404,
+        "success": false,
+        "responseSize": 156
+      },
+      {
+        "service": "OCC Command Centre",
+        "endpoint": "GET /api/occ/alerts",
+        "status": 404,
+        "success": false,
+        "responseSize": 153
+      },
+      {
+        "service": "OCC Command Centre",
+        "endpoint": "POST /api/occ/alerts/create",
+        "status": 404,
+        "success": false,
+        "responseSize": 161
+      },
+      {
+        "service": "OCC Command Centre",
+        "endpoint": "GET /api/occ/kpis",
+        "status": 404,
+        "success": false,
+        "responseSize": 151
+      },
+      {
+        "service": "OCC Command Centre",
+        "endpoint": "GET /api/occ/projects",
+        "status": 404,
+        "success": false,
+        "responseSize": 155
+      },
+      {
+        "service": "OCC Command Centre",
+        "endpoint": "POST /api/occ/projects",
+        "status": 404,
+        "success": false,
+        "responseSize": 156
+      }
+    ],
+    "Partner Integration": [
+      {
+        "service": "Partner Integration",
+        "endpoint": "GET /api/partner/insurance/providers",
+        "status": 404,
+        "success": false,
+        "responseSize": 170
+      },
+      {
+        "service": "Partner Integration",
+        "endpoint": "POST /api/partner/insurance/claim",
+        "status": 404,
+        "success": false,
+        "responseSize": 167
+      },
+      {
+        "service": "Partner Integration",
+        "endpoint": "GET /api/partner/pharmacy/orders",
+        "status": 404,
+        "success": false,
+        "responseSize": 166
+      },
+      {
+        "service": "Partner Integration",
+        "endpoint": "GET /api/partner/suppliers",
+        "status": 404,
+        "success": false,
+        "responseSize": 160
+      },
+      {
+        "service": "Partner Integration",
+        "endpoint": "GET /api/partner/telemedicine/sessions",
+        "status": 404,
+        "success": false,
+        "responseSize": 172
+      },
+      {
+        "service": "Partner Integration",
+        "endpoint": "POST /api/partner/telemedicine/schedule",
+        "status": 404,
+        "success": false,
+        "responseSize": 173
+      },
+      {
+        "service": "Partner Integration",
+        "endpoint": "GET /api/partner/compliance/reports",
+        "status": 404,
+        "success": false,
+        "responseSize": 169
+      },
+      {
+        "service": "Partner Integration",
+        "endpoint": "GET /api/partner/government/export",
+        "status": 404,
+        "success": false,
+        "responseSize": 168
+      }
+    ],
+    "Analytics & ML": [
+      {
+        "service": "Analytics & ML",
+        "endpoint": "GET /api/analytics/metrics",
+        "status": 200,
+        "success": true,
+        "responseSize": 885
+      },
+      {
+        "service": "Analytics & ML",
+        "endpoint": "POST /api/analytics/data-lake/export",
+        "status": 200,
+        "success": true,
+        "responseSize": 4716
+      },
+      {
+        "service": "Analytics & ML",
+        "endpoint": "POST /api/analytics/predict/demand",
+        "status": 200,
+        "success": true,
+        "responseSize": 1414
+      },
+      {
+        "service": "Analytics & ML",
+        "endpoint": "POST /api/analytics/predict/drug-usage",
+        "status": 200,
+        "success": true,
+        "responseSize": 1328
+      },
+      {
+        "service": "Analytics & ML",
+        "endpoint": "POST /api/analytics/predict/occupancy",
+        "status": 200,
+        "success": true,
+        "responseSize": 1127
+      },
+      {
+        "service": "Analytics & ML",
+        "endpoint": "POST /api/analytics/ml/triage",
+        "status": 200,
+        "success": true,
+        "responseSize": 409
+      },
+      {
+        "service": "Analytics & ML",
+        "endpoint": "POST /api/analytics/ml/fraud",
+        "status": 200,
+        "success": true,
+        "responseSize": 352
+      },
+      {
+        "service": "Analytics & ML",
+        "endpoint": "POST /api/analytics/ml/risk-score",
+        "status": 200,
+        "success": true,
+        "responseSize": 692
+      }
+    ]
+  },
+  "frontends": {
+    "Unified Platform": {
+      "name": "Unified Platform",
+      "url": "http://localhost:4000/",
+      "status": "ERROR",
+      "success": false,
+      "error": "connect ECONNREFUSED 127.0.0.1:4000"
+    },
+    "Digital Sourcing Frontend": {
+      "name": "Digital Sourcing Frontend",
+      "url": "http://localhost:5001/",
+      "status": "ERROR",
+      "success": false,
+      "error": "connect ECONNREFUSED 127.0.0.1:5001"
+    },
+    "HMS Frontend": {
+      "name": "HMS Frontend",
+      "url": "http://localhost:5002/",
+      "status": "ERROR",
+      "success": false,
+      "error": "connect ECONNREFUSED 127.0.0.1:5002"
+    },
+    "CRM Frontend": {
+      "name": "CRM Frontend",
+      "url": "http://localhost:5003/",
+      "status": "ERROR",
+      "success": false,
+      "error": "connect ECONNREFUSED 127.0.0.1:5003"
+    },
+    "OCC Frontend": {
+      "name": "OCC Frontend",
+      "url": "http://localhost:5004/",
+      "status": "ERROR",
+      "success": false,
+      "error": "connect ECONNREFUSED 127.0.0.1:5004"
+    },
+    "API Documentation": {
+      "name": "API Documentation",
+      "url": "http://localhost:5005/",
+      "status": "ERROR",
+      "success": false,
+      "error": "connect ECONNREFUSED 127.0.0.1:5005"
+    }
+  },
+  "forms": {
+    "Hospital Application Form": {
+      "success": false,
+      "status": 404,
+      "service": "Digital Sourcing"
+    },
+    "Patient Registration Form": {
+      "success": false,
+      "status": 404,
+      "service": "HMS Core"
+    },
+    "Appointment Booking Form": {
+      "success": false,
+      "status": 404,
+      "service": "CRM System"
+    },
+    "Invoice Creation Form": {
+      "success": false,
+      "status": 404,
+      "service": "HMS Core"
+    },
+    "Insurance Claim Form": {
+      "success": false,
+      "status": 404,
+      "service": "Partner Integration"
+    }
+  },
+  "database": {
+    "connected": false,
+    "status": 404
+  },
+  "errors": []
+}

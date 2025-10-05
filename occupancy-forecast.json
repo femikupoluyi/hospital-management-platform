@@ -1,0 +1,111 @@
+{
+  "success": true,
+  "hospital_id": "H001",
+  "current_occupancy": "75.0",
+  "forecasts": [
+    {
+      "date": "2025-10-05",
+      "predicted_occupancy": "77.5",
+      "confidence": 0.78,
+      "recommended_staff": 16,
+      "alert": null
+    },
+    {
+      "date": "2025-10-06",
+      "predicted_occupancy": "77.3",
+      "confidence": 0.78,
+      "recommended_staff": 16,
+      "alert": null
+    },
+    {
+      "date": "2025-10-07",
+      "predicted_occupancy": "85.1",
+      "confidence": 0.78,
+      "recommended_staff": 18,
+      "alert": null
+    },
+    {
+      "date": "2025-10-08",
+      "predicted_occupancy": "84.6",
+      "confidence": 0.78,
+      "recommended_staff": 17,
+      "alert": null
+    },
+    {
+      "date": "2025-10-09",
+      "predicted_occupancy": "86.0",
+      "confidence": 0.78,
+      "recommended_staff": 18,
+      "alert": null
+    },
+    {
+      "date": "2025-10-10",
+      "predicted_occupancy": "76.6",
+      "confidence": 0.78,
+      "recommended_staff": 16,
+      "alert": null
+    },
+    {
+      "date": "2025-10-11",
+      "predicted_occupancy": "77.9",
+      "confidence": 0.78,
+      "recommended_staff": 16,
+      "alert": null
+    },
+    {
+      "date": "2025-10-12",
+      "predicted_occupancy": "76.9",
+      "confidence": 0.78,
+      "recommended_staff": 16,
+      "alert": null
+    },
+    {
+      "date": "2025-10-13",
+      "predicted_occupancy": "77.4",
+      "confidence": 0.78,
+      "recommended_staff": 16,
+      "alert": null
+    },
+    {
+      "date": "2025-10-14",
+      "predicted_occupancy": "78.4",
+      "confidence": 0.78,
+      "recommended_staff": 16,
+      "alert": null
+    },
+    {
+      "date": "2025-10-15",
+      "predicted_occupancy": "78.1",
+      "confidence": 0.78,
+      "recommended_staff": 16,
+      "alert": null
+    },
+    {
+      "date": "2025-10-16",
+      "predicted_occupancy": "76.3",
+      "confidence": 0.78,
+      "recommended_staff": 16,
+      "alert": null
+    },
+    {
+      "date": "2025-10-17",
+      "predicted_occupancy": "81.5",
+      "confidence": 0.78,
+      "recommended_staff": 17,
+      "alert": null
+    },
+    {
+      "date": "2025-10-18",
+      "predicted_occupancy": "84.4",
+      "confidence": 0.78,
+      "recommended_staff": 17,
+      "alert": null
+    }
+  ],
+  "model": "LSTM_Occupancy_v1",
+  "insights": {
+    "peak_day": "2025-10-09",
+    "average_occupancy": "79.9",
+    "high_risk_days": 0
+  }
+}
